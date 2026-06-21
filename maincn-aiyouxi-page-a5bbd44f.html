@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 再次重逢的探索站</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f9f5ef;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
+      color: #2e2c2a;
+      line-height: 1.7;
+      padding: 0 1.5rem;
+    }
+
+    .page-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 0 3.5rem;
+    }
+
+    /* 顶部导航 — 极简文字链 */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #d6cec3;
+      margin-bottom: 3rem;
+    }
+
+    .site-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #4c4a46;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: #7b6f62;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #b3541a;
+      border-bottom-color: #b3541a;
+    }
+
+    /* hero 区 — 留白、温和引导 */
+    .hero {
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 350;
+      letter-spacing: -0.01em;
+      color: #3b3833;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero .lead {
+      font-size: 1.1rem;
+      color: #5c554e;
+      max-width: 32em;
+    }
+
+    .hero .lead a {
+      color: #b3541a;
+      text-decoration: none;
+      border-bottom: 1px solid #daad8a;
+    }
+
+    .hero .lead a:hover {
+      border-bottom-color: #b3541a;
+    }
+
+    /* 引用块 */
+    .inset-quote {
+      background: #ede7df;
+      padding: 1.2rem 1.6rem;
+      margin: 2rem 0 2.5rem;
+      border-left: 5px solid #c6a68b;
+      border-radius: 0 8px 8px 0;
+      font-style: normal;
+      color: #413d37;
+      font-size: 0.98rem;
+    }
+
+    .inset-quote strong {
+      font-weight: 500;
+    }
+
+    .inset-quote a {
+      color: #b3541a;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 三个场景模块 — 卡片感 */
+    .scenes-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 2.8rem 0 3.2rem;
+    }
+
+    .scene-card {
+      flex: 1 1 200px;
+      min-width: 180px;
+      background: #fffcf8;
+      padding: 1.5rem 1.2rem 1.5rem 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 6px 14px rgba(0,0,0,0.02);
+      border: 1px solid #e6ddd4;
+      transition: box-shadow 0.2s;
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04), 0 12px 20px rgba(0,0,0,0.03);
+    }
+
+    .scene-card .emoji-label {
+      display: inline-block;
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .scene-card h3 {
+      font-weight: 500;
+      font-size: 1.15rem;
+      margin-bottom: 0.25rem;
+      color: #3f3a34;
+    }
+
+    .scene-card p {
+      color: #5d554c;
+      font-size: 0.95rem;
+    }
+
+    .scene-card a {
+      color: #b3541a;
+      text-decoration: none;
+      border-bottom: 1px solid #e0cbb9;
+    }
+
+    .scene-card a:hover {
+      border-bottom-color: #b3541a;
+    }
+
+    /* 常见说明区域 — 类似 FAQ 摘要 */
+    .faq-summary {
+      margin: 2.2rem 0 2.8rem;
+    }
+
+    .faq-summary h2 {
+      font-weight: 380;
+      font-size: 1.5rem;
+      color: #3b3833;
+      border-bottom: 1px solid #d6cec3;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #ece5dd;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: 500;
+      color: #4a443e;
+      margin-bottom: 0.15rem;
+    }
+
+    .faq-answer {
+      color: #5f5951;
+      font-size: 0.95rem;
+    }
+
+    .faq-answer a {
+      color: #b3541a;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 提示框 */
+    .tip-box {
+      background: #eae3da;
+      padding: 1rem 1.6rem;
+      border-radius: 40px 12px 12px 40px;
+      border-left: 8px solid #b17f60;
+      margin: 2.2rem 0;
+      font-size: 0.97rem;
+      color: #3f3b35;
+    }
+
+    .tip-box a {
+      color: #b3541a;
+      text-decoration: underline;
+    }
+
+    /* footer */
+    .page-footer {
+      margin-top: 3.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #dbd3c9;
+      font-size: 0.9rem;
+      color: #7d7268;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .page-footer a {
+      color: #7d7268;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 560px) {
+      body { padding: 0 1rem; }
+      .top-nav { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; }
+      .hero h1 { font-size: 1.6rem; }
+      .scenes-grid { flex-direction: column; }
+      .scene-card { min-width: unset; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- 顶部导航 -->
+  <nav class="top-nav">
+    <span class="site-title">· 爱游戏 ·</span>
+    <div class="nav-links">
+      <a href="#">再次访问</a>
+      <a href="#">收藏夹</a>
+      <a href="#">关注动态</a>
+    </div>
+  </nav>
+
+  <!-- hero 介绍区 -->
+  <section class="hero">
+    <h1>再次走进熟悉的角落</h1>
+    <div class="lead">
+      <p>有些站点，值得反复回来。无论是为了看看新近的分享，还是单纯习惯在安静时打开 <a href="https://maincn-aiyouxi.com.cn">爱游戏</a> —— 这里没有多余的打扰，只有对游戏本真的留意。我们相信，好的内容经得起多次阅读，也值得被收藏。</p>
+    </div>
+  </section>
+
+  <!-- 引用块：关于收藏与再访 -->
+  <div class="inset-quote">
+    <strong>📌 再次访问的意义</strong> —— 把心仪的页面放进收藏夹，不是结束，而是重逢的开始。<br>
+    每次回到 <a href="https://maincn-aiyouxi.com.cn">爱游戏</a>，都可能遇到更新后的文字、调整过的栏目，或一篇恰好击中心情的小文章。持续的关注，让浏览有了温度。
+  </div>
+
+  <!-- 三个场景模块 -->
+  <div class="scenes-grid">
+    <div class="scene-card">
+      <span class="emoji-label">📚</span>
+      <h3>午后重读</h3>
+      <p>翻出之前收藏的页面，像翻开一本旧杂志。也许某篇评测或随笔，再看时有了不同体会。<br>
+      <a href="https://maincn-aiyouxi.com.cn">爱游戏</a> 上的一些内容，适合反复咀嚼。</p>
+    </div>
+    <div class="scene-card">
+      <span class="emoji-label">🏷️</span>
+      <h3>随手收藏</h3>
+      <p>遇到有趣的游戏笔记、独立开发故事或怀旧盘点，不妨先收藏起来。下次打开 <a href="https://maincn-aiyouxi.com.cn">爱游戏</a> 就能迅速找到它们。</p>
+    </div>
+    <div class="scene-card">
+      <span class="emoji-label">🔁</span>
+      <h3>持续关注</h3>
+      <p>不必每天刷新，偶尔回来看看，总会有新的片段。保持一种松散的关注，反而更能享受发现的乐趣。</p>
+    </div>
+  </div>
+
+  <!-- 常见说明 (FAQ 摘要) -->
+  <section class="faq-summary">
+    <h2>一些常见说明</h2>
+    <div class="faq-item">
+      <div class="faq-question">收藏后如何快速找回？</div>
+      <div class="faq-answer">建议使用浏览器的书签功能，将 <a href="https://maincn-aiyouxi.com.cn">爱游戏</a> 添加至书签栏或收藏夹文件夹，方便随时打开。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">内容会不定期更新吗？</div>
+      <div class="faq-answer">是的，但更新节奏比较随性。所以时常回来看看，或许就能碰上新内容。我们不会用推送打扰你。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">可以自由分享页面吗？</div>
+      <div class="faq-answer">当然。每篇内容都欢迎在尊重原意的前提下分享。直接复制链接或通过社交平台推荐都行。</div>
+    </div>
+  </section>
+
+  <!-- 提示框 -->
+  <div class="tip-box">
+    💡 如果你今天第一次来到 <a href="https://maincn-aiyouxi.com.cn">爱游戏</a>，不妨先浏览两三个感兴趣的话题，然后收藏起来。下次想找回这段浏览体验，会很容易。
+  </div>
+
+  <!-- footer -->
+  <footer class="page-footer">
+    <span>爱游戏 · 温和的浏览陪伴</span>
+    <span><a href="#">关于</a> · <a href="#">订阅</a> · 非商业站点</span>
+  </footer>
+
+</div>
+</body>
+</html>
